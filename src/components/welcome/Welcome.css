@@ -1,0 +1,9 @@
+main {
+  height: 100%;
+}
+
+.bg {
+  background-image: url("https://cdnb.artstation.com/p/assets/images/images/033/495/085/original/andre-brtnh-bertanha-pk-center-painting-animado.gif?1609779461");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
