@@ -1,5 +1,5 @@
-export const pokeBoxService = () => {
-  return fetch(`http://localhost:8088/ownedPokemon?userId=0`).then((res) =>
+export const pokeBoxService = (id) => {
+  return fetch(`http://localhost:8088/ownedPokemon?userId=${id}`).then((res) =>
     res.json()
   );
 };

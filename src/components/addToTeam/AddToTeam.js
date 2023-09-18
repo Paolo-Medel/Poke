@@ -5,12 +5,12 @@ import { getPokemonByName } from "../../services/pokedexService";
 import { gameService } from "../../services/gameService";
 import { Button } from "react-bootstrap";
 
-export const AddToTeam = () => {
+export const AddToTeam = ({ currentUser }) => {
   const [pokemon, setPokemon] = useState([]);
   const [games, setGames] = useState([]);
   const [pokemonToAdd, setPokemonToAdd] = useState({
     name: "",
-    userId: 0,
+    userId: currentUser.id,
     pokeId: 0,
     gameId: 0,
     attack: 0,
