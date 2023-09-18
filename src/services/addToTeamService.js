@@ -1,6 +1,6 @@
 export const addToTeam = (pokemon) => {
   return fetch(`http://localhost:8088/ownedPokemon`, {
-    method: "PUT",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },

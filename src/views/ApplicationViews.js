@@ -4,6 +4,8 @@ import { Welcome } from "../components/welcome/Welcome";
 import { PokeDex } from "../components/PokeDex/PokeDex";
 import { PokeDexDetails } from "../components/PokeDex/PokeDexDetails";
 import { AddToTeam } from "../components/addToTeam/AddToTeam";
+import { PokeBox } from "../components/PokeBox/PokeBox";
+import { PokeBoxDetails } from "../components/PokeBox/PokeBoxDetails";
 
 export const ApplicationViews = () => {
   return (
@@ -23,7 +25,10 @@ export const ApplicationViews = () => {
           <Route path=":pokemonName" element={<PokeDexDetails />} />
           <Route path=":pokemonName/AddToTeam" element={<AddToTeam />} />
         </Route>
-        <Route path="pokebox" element={<>PokeBox</>} />
+        <Route path="pokebox">
+          <Route index element={<PokeBox />} />
+          <Route path=":pokemonName" element={<PokeBoxDetails />} />
+        </Route>
       </Route>
     </Routes>
   );
