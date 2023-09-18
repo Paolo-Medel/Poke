@@ -3,12 +3,12 @@ import "./PokeBox.css";
 import { pokeBoxService } from "../../services/pokeBoxService";
 import { Link } from "react-router-dom";
 
-export const PokeBox = () => {
+export const PokeBox = ({ currentUser }) => {
   // need current user id to send to setter function. Bypassing for now
   const [ownedPokemon, setOwnedPokemon] = useState([]);
 
   useEffect(() => {
-    pokeBoxService().then((obj) => {
+    pokeBoxService(currentUser.id).then((obj) => {
       setOwnedPokemon(obj);
     });
   }, []);
