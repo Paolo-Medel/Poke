@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { addToTeam } from "../../services/addToTeamService";
 import { getPokemonByName } from "../../services/pokedexService";
 import { gameService } from "../../services/gameService";
+import { Button } from "react-bootstrap";
 
 export const AddToTeam = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -18,8 +19,11 @@ export const AddToTeam = () => {
     spDef: 0,
     hp: 0,
     speed: 0,
+    image: "",
   });
   const { pokemonName } = useParams();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getPokemonByName(pokemonName).then((obj) => {
@@ -27,12 +31,33 @@ export const AddToTeam = () => {
       const copy = { ...pokemonToAdd };
       copy.name = obj.name;
       copy.pokeId = obj.id;
+      copy.image = obj.sprites.front_default;
       setPokemonToAdd(copy);
     });
     gameService().then((obj) => {
       setGames(obj);
     });
   }, []);
+
+  const handleSave = () => {
+    let editedPokemon = {
+      name: pokemonToAdd.name,
+      userId: pokemonToAdd.userId,
+      pokeId: pokemonToAdd.pokeId,
+      gameId: pokemonToAdd.gameId,
+      attack: pokemonToAdd.attack,
+      defense: pokemonToAdd.defense,
+      spAtk: pokemonToAdd.spAtk,
+      spDef: pokemonToAdd.spDef,
+      hp: pokemonToAdd.hp,
+      speed: pokemonToAdd.speed,
+      image: pokemonToAdd.image,
+    };
+
+    addToTeam(editedPokemon).then(() => {
+      navigate(`/pokedex/`);
+    });
+  };
 
   return (
     <>
@@ -48,7 +73,7 @@ export const AddToTeam = () => {
               value={pokemonToAdd.attack}
               onChange={(event) => {
                 const copy = { ...pokemonToAdd };
-                copy.attack = event.target.value;
+                copy.attack = parseInt(event.target.value);
                 setPokemonToAdd(copy);
               }}
             ></input>
@@ -63,7 +88,7 @@ export const AddToTeam = () => {
               value={pokemonToAdd.defense}
               onChange={(event) => {
                 const copy = { ...pokemonToAdd };
-                copy.defense = event.target.value;
+                copy.defense = parseInt(event.target.value);
                 setPokemonToAdd(copy);
               }}
             ></input>
@@ -78,7 +103,7 @@ export const AddToTeam = () => {
               value={pokemonToAdd.spAtk}
               onChange={(event) => {
                 const copy = { ...pokemonToAdd };
-                copy.spAtk = event.target.value;
+                copy.spAtk = parseInt(event.target.value);
                 setPokemonToAdd(copy);
               }}
             ></input>
@@ -93,7 +118,7 @@ export const AddToTeam = () => {
               value={pokemonToAdd.spDef}
               onChange={(event) => {
                 const copy = { ...pokemonToAdd };
-                copy.spDef = event.target.value;
+                copy.spDef = parseInt(event.target.value);
                 setPokemonToAdd(copy);
               }}
             ></input>
@@ -108,7 +133,7 @@ export const AddToTeam = () => {
               value={pokemonToAdd.speed}
               onChange={(event) => {
                 const copy = { ...pokemonToAdd };
-                copy.speed = event.target.value;
+                copy.speed = parseInt(event.target.value);
                 setPokemonToAdd(copy);
               }}
             ></input>
@@ -123,7 +148,7 @@ export const AddToTeam = () => {
               value={pokemonToAdd.hp}
               onChange={(event) => {
                 const copy = { ...pokemonToAdd };
-                copy.hp = event.target.value;
+                copy.hp = parseInt(event.target.value);
                 setPokemonToAdd(copy);
               }}
             ></input>
@@ -132,14 +157,33 @@ export const AddToTeam = () => {
       </div>
       <div>
         <label>Which game did you catch {pokemon.name} in?</label>
-        <select>
+        <select
+          onChange={(event) => {
+            const copy = { ...pokemonToAdd };
+            copy.gameId = parseInt(event.target.value);
+            setPokemonToAdd(copy);
+          }}
+          defaultValue={"Please Select an option"}
+        >
+          <option value="">Please Select an option</option>
           {games.map((game) => {
-            return <option key={game.id}>{game.name}</option>;
+            return (
+              <option value={game.id} key={game.id}>
+                {game.name}
+              </option>
+            );
           })}
         </select>
+      </div>
+      <div>
+        <Button
+          onClick={() => {
+            handleSave();
+          }}
+        >
+          Save this 'Mon!
+        </Button>
       </div>
     </>
   );
 };
-
-//! how do I get the pokemon data in here?
