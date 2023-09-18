@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getPokemonByName } from "../../services/pokedexService";
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -30,6 +30,8 @@ export const PokeBoxDetails = () => {
     });
   }, [ownedPokemon]);
 
+  const navigate = useNavigate();
+
   return (
     <>
       <h1>{pokemonName}</h1>
@@ -41,12 +43,7 @@ export const PokeBoxDetails = () => {
           Type: {pokeApiDetail.types?.[0].type.name}{" "}
           {pokeApiDetail.types?.[1]?.type.name}
         </div>
-        <div>
-          Abilities:
-          <div>{pokeApiDetail.abilities?.[0].ability.name}</div>
-          <div> {pokeApiDetail.abilities?.[1]?.ability.name}</div>
-          <div> {pokeApiDetail.abilities?.[2]?.ability.name}</div>
-        </div>
+        <div>Ability: {ownedPokemon?.[0]?.ability}</div>
       </div>
       <div>
         <div>Attack: {ownedPokemon?.[0]?.attack}</div>
@@ -61,7 +58,15 @@ export const PokeBoxDetails = () => {
           {pokemonName} was caught in {game[0]?.name}
         </p>
       </div>
-      <Button>Release to Wild</Button>
+      <Button
+        onClick={() => {
+          deleteOwnedPokemonById(ownedPokemon[0].id).then(() => {
+            navigate(`/pokebox/`);
+          });
+        }}
+      >
+        Release to Wild
+      </Button>
     </>
   );
 };

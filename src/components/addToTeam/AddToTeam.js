@@ -20,6 +20,7 @@ export const AddToTeam = () => {
     hp: 0,
     speed: 0,
     image: "",
+    ability: "",
   });
   const { pokemonName } = useParams();
 
@@ -52,6 +53,7 @@ export const AddToTeam = () => {
       hp: pokemonToAdd.hp,
       speed: pokemonToAdd.speed,
       image: pokemonToAdd.image,
+      ability: pokemonToAdd.ability,
     };
 
     addToTeam(editedPokemon).then(() => {
@@ -154,6 +156,24 @@ export const AddToTeam = () => {
             ></input>
           </fieldset>
         </form>
+        <label>Which ability does your Pokemon have?</label>
+        <select
+          defaultValue={"Please Select an Option"}
+          onChange={(event) => {
+            const copy = { ...pokemonToAdd };
+            copy.ability = event.target.value;
+            setPokemonToAdd(copy);
+          }}
+        >
+          <option value="">Please Select an option</option>
+          {pokemon.abilities?.map((obj) => {
+            return (
+              <option key={obj.ability.name} value={obj.ability.name}>
+                {obj.ability.name}
+              </option>
+            );
+          })}
+        </select>
       </div>
       <div>
         <label>Which game did you catch {pokemon.name} in?</label>
