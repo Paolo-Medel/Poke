@@ -7,6 +7,7 @@ import { AddToTeam } from "../components/addToTeam/AddToTeam";
 import { PokeBox } from "../components/PokeBox/PokeBox";
 import { PokeBoxDetails } from "../components/PokeBox/PokeBoxDetails";
 import { useEffect, useState } from "react";
+import { EditPokeBoxMon } from "../components/PokeBox/editPokeBoxMon";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -41,6 +42,10 @@ export const ApplicationViews = () => {
         <Route path="pokebox">
           <Route index element={<PokeBox currentUser={currentUser} />} />
           <Route path=":pokemonName" element={<PokeBoxDetails />} />
+          <Route
+            path=":pokemonName/edit"
+            element={<EditPokeBoxMon currentUser={currentUser} />}
+          />
         </Route>
       </Route>
     </Routes>

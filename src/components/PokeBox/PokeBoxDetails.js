@@ -58,6 +58,9 @@ export const PokeBoxDetails = () => {
           {pokemonName} was caught in {game[0]?.name}
         </p>
       </div>
+      <Link to={`/pokebox/${pokemonName}/edit`}>
+        <Button>Edit {pokemonName}</Button>
+      </Link>
       <Button
         onClick={() => {
           deleteOwnedPokemonById(ownedPokemon[0].id).then(() => {
@@ -70,5 +73,3 @@ export const PokeBoxDetails = () => {
     </>
   );
 };
-
-//TODO Delete method
