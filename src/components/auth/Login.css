@@ -1,3 +1,20 @@
+@font-face {
+  font-family: Poke;
+  src: local("Poke"),
+    url("../../fonts/poke/PocketMonk-15ze.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: GBA;
+  src: local("GBA"),
+    url("../../fonts/gba/PokemonGb-RAeo.ttf") format("truetype");
+}
+.gif {
+  background-image: url("https://media.tenor.com/g7dQf6lh3icAAAAd/pokemon-ruby-gba.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .container-login {
   text-align: center;
 }
@@ -10,16 +27,19 @@
 .form-login {
   width: 60%;
   margin: 2rem auto;
+  margin-top: 0px;
 }
 
 .form-login > h1 {
-  font-size: 2.5rem;
+  font-size: 7.5rem;
   text-align: center;
+  font-family: Poke;
 }
 
 .form-login > h2 {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 0.75rem;
+  font-family: GBA;
 }
 
 .form-login > fieldset > input[type="email"] {
@@ -28,12 +48,14 @@
 
 .login-btn {
   align-self: flex-end;
+  font-family: GBA;
 }
 
 .login-btn:focus {
   box-shadow: none;
   outline: 2px solid transparent;
   outline-offset: 2px;
+  font-family: GBA;
 }
 
 /************* FORM STYLES *************/
@@ -44,7 +66,7 @@ form {
   border-radius: 10px;
   padding: 1rem 0rem 0rem 1rem;
   box-shadow: 1px 2px 5px lightgray;
-  background-color: var(--offWhite);
+  background-color: rgba(154, 232, 19, 0.211);
 }
 
 fieldset {
@@ -76,4 +98,9 @@ fieldset {
   box-shadow: none;
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+.gba {
+  font-family: GBA;
+  font-size: 0.5em;
+  text-align: center;
 }
