@@ -1,9 +1,111 @@
+@font-face {
+  font-family: Poke;
+  src: local("Poke"),
+    url("../../fonts/poke/PocketMonk-15ze.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: GBA;
+  src: local("GBA"),
+    url("../../fonts/gba/PokemonGb-RAeo.ttf") format("truetype");
+}
 main {
-  height: 100%;
+  height: 1000px;
+}
+
+.h1Welcome {
+  font-family: Poke;
+  font-size: 4.5rem;
 }
 
 .bg {
   background-image: url("https://cdnb.artstation.com/p/assets/images/images/033/495/085/original/andre-brtnh-bertanha-pk-center-painting-animado.gif?1609779461");
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.smallBG {
+  background-color: whitesmoke;
+  opacity: 0.923;
+  height: 90%;
+  display: flex;
+  border-radius: 5%;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.aside {
+  align-self: flex-end;
+  opacity: 1;
+}
+
+p {
+  font-size: large;
+  text-align: center;
+  margin: 80px;
+  font-family: GBA;
+}
+
+.dialogueBox {
+  background-image: url("https://clipart-library.com/new_gallery/666446_pokemon-text-box-png.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: right;
+}
+
+.flexChild {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.textBox {
+  margin: 125px;
+  background-image: url("https://clipart-library.com/new_gallery/666446_pokemon-text-box-png.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* CSS */
+.button-89 {
+  margin: 100px;
+  --b: 3px; /* border thickness */
+  --s: 0.45em; /* size of the corner */
+
+  --color: #373b44;
+
+  padding: calc(0.5em + var(--s)) calc(0.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background: conic-gradient(
+      from 90deg at var(--b) var(--b),
+      #0000 90deg,
+      var(--color) 0
+    )
+    var(--_p) var(--_p) / calc(100% - var(--b) - 2 * var(--_p))
+    calc(100% - var(--b) - 2 * var(--_p));
+  transition: 0.3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: 0.6em;
+  font-size: 16px;
+
+  border: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  font-family: GBA;
+}
+
+.button-89:hover,
+.button-89:focus-visible {
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: 0.05em;
+}
+
+.button-89:active {
+  background: var(--color);
+  color: #fff;
 }

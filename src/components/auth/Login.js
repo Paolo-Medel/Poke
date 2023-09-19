@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { getUserByEmail } from "../../services/userService";
-import { Button } from "react-bootstrap";
+import { Button, Image } from "react-bootstrap";
+import mp3_file from "./audio/Pokémon Ruby, Sapphire & Emerald - Gym Leader Battle Music (HQ).mp3";
+import image from "./audio/PokeStop-9-19-2023.png";
 
 export const Login = () => {
   const [email, set] = useState("");
@@ -30,36 +32,43 @@ export const Login = () => {
   };
 
   return (
-    <main className="container-login">
-      <section>
-        <form className="form-login" onSubmit={handleLogin}>
-          <h1>PokeStop</h1>
-          <h2>Please sign in</h2>
-          <fieldset>
-            <div className="form-group">
-              <input
-                type="email"
-                value={email}
-                onChange={(evt) => set(evt.target.value)}
-                className="form-control"
-                placeholder="Email address"
-                required
-                autoFocus
-              />
-            </div>
-          </fieldset>
-          <fieldset>
-            <div className="form-group">
-              <Button className="login-btn btn-info" type="submit">
-                Sign in
-              </Button>
-            </div>
-          </fieldset>
-        </form>
-      </section>
-      <section>
-        <Link to="/register">Not a member yet?</Link>
-      </section>
-    </main>
+    <div className="gif">
+      <main className="container-login">
+        <div>
+          <audio src={mp3_file} autoPlay controls></audio>
+        </div>
+        <section>
+          <form className="form-login" onSubmit={handleLogin}>
+            <Image src={image}></Image>
+            <h2>Please sign in</h2>
+            <fieldset>
+              <div className="form-group">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(evt) => set(evt.target.value)}
+                  className="form-control"
+                  placeholder="Email address"
+                  required
+                  autoFocus
+                />
+              </div>
+            </fieldset>
+            <fieldset>
+              <div className="form-group">
+                <Button className="login-btn" type="submit">
+                  Sign in
+                </Button>
+              </div>
+            </fieldset>
+          </form>
+        </section>
+        <section>
+          <Link to="/register">
+            <p class="gba">Not a member yet?</p>
+          </Link>
+        </section>
+      </main>
+    </div>
   );
 };
