@@ -1,3 +1,9 @@
+@font-face {
+  font-family: Poke;
+  src: local("Poke"),
+    url("../../fonts/poke/PocketMonk-15ze.ttf") format("truetype");
+}
+
 .navbar {
   display: flex;
   flex-wrap: nowrap;
@@ -16,7 +22,7 @@
 
 .navbar-link {
   text-decoration: none;
-  font-family: "Quicksand", sans-serif;
+  font-family: Poke;
   letter-spacing: 1px;
 }
 

@@ -10,7 +10,7 @@
     url("../../fonts/gba/PokemonGb-RAeo.ttf") format("truetype");
 }
 .gif {
-  background-image: url("https://media.tenor.com/g7dQf6lh3icAAAAd/pokemon-ruby-gba.gif");
+  background-image: url("https://cutewallpaper.org/21/pokemon-background-gif/Best-Pokemon-Background-Gif-GIFs-Gfycat.gif");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -104,3 +104,14 @@ fieldset {
   font-size: 0.5em;
   text-align: center;
 }
+
+.mainBG {
+  background-image: url("https://i.pinimg.com/originals/ab/58/cc/ab58cc75dcb2e42555cf7e614216350a.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* ruby gif https://media.tenor.com/g7dQf6lh3icAAAAd/pokemon-ruby-gba.gif */
+/* red opening gif https://i.pinimg.com/originals/25/c4/f2/25c4f291da29d220a301670bc185b0d4.gif */
+/* latios still opening https://i.imgur.com/fgI4k.jpg */
+/* fountain gif https://cutewallpaper.org/21/pokemon-background-gif/Best-Pokemon-Background-Gif-GIFs-Gfycat.gif */

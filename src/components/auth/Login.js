@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { getUserByEmail } from "../../services/userService";
 import { Button, Image } from "react-bootstrap";
-import mp3_file from "./audio/Pokémon Ruby, Sapphire & Emerald - Gym Leader Battle Music (HQ).mp3";
+import mp3_file from "./audio/Floaroma Town (Night) - Pokémon Diamond_Pearl_Platinum.mp3";
 import image from "./audio/PokeStop-9-19-2023.png";
 
 export const Login = () => {
@@ -34,9 +34,6 @@ export const Login = () => {
   return (
     <div className="gif">
       <main className="container-login">
-        <div>
-          <audio src={mp3_file} autoPlay controls></audio>
-        </div>
         <section>
           <form className="form-login" onSubmit={handleLogin}>
             <Image src={image}></Image>
@@ -53,22 +50,26 @@ export const Login = () => {
                   autoFocus
                 />
               </div>
-            </fieldset>
-            <fieldset>
               <div className="form-group">
-                <Button className="login-btn" type="submit">
+                <button className="login-btn btn-info" type="submit">
                   Sign in
-                </Button>
+                </button>
               </div>
             </fieldset>
+            <fieldset></fieldset>
           </form>
         </section>
         <section>
           <Link to="/register">
-            <p class="gba">Not a member yet?</p>
+            <p className="gba">Not a member yet?</p>
           </Link>
         </section>
+        <div>
+          <audio src={mp3_file} autoPlay></audio>
+        </div>
       </main>
     </div>
   );
 };
+
+//
