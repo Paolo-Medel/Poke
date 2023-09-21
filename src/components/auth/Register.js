@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { createUser, getUserByEmail } from "../../services/userService";
+import { Image } from "react-bootstrap";
+import image from "./audio/PokeStop-9-19-2023.png";
 
 export const Register = (props) => {
   const [customer, setCustomer] = useState({
@@ -46,10 +48,10 @@ export const Register = (props) => {
   };
 
   return (
-    <main style={{ textAlign: "center" }}>
+    <main className="mainBG" style={{ textAlign: "center" }}>
       <form className="form-login" onSubmit={handleRegister}>
-        <h1>Honey Rae Repairs</h1>
-        <h2>Please Register</h2>
+        <Image src={image}></Image>
+        <h2>Join the action!</h2>
         <fieldset>
           <div className="form-group">
             <input

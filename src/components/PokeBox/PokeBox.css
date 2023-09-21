@@ -1,0 +1,22 @@
+.flex {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bg1 {
+  background-color: black;
+  height: 1000px;
+  background-image: url("https://cdn.wallpapersafari.com/36/83/omkpxf.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.pokebox {
+  background-color: black;
+  min-height: 500px;
+  height: fit-content;
+  border-radius: 5%;
+  width: 1500px;
+}
