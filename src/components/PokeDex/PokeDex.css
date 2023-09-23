@@ -27,3 +27,44 @@
   background-color: rgb(186, 208, 242);
   opacity: 0.8;
 }
+
+.PokeDexDetails {
+  background-image: url("https://wallpapercave.com/wp/wp3170170.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 1100px;
+}
+
+.dexDetailsGrid {
+  display: grid;
+  grid-template-columns: 568px 568px 568px;
+  grid-template-rows: 500px 500px;
+  column-gap: 100px;
+  row-gap: 100px;
+  align-items: center;
+}
+
+.topRightBox {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  display: grid;
+  grid-template-columns: 400px 400px;
+  grid-template-rows: 108px 0px;
+  font-family: Poke;
+  font-size: xx-large;
+  margin-left: 250px;
+}
+
+.AddToTeamBtn {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  margin-left: 240px;
+  margin-top: 170px;
+}
+
+.pokeImg {
+  margin-left: 208px;
+  margin-top: 212px;
+  width: 400px;
+  height: 400px;
+}
