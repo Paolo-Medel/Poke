@@ -20,3 +20,39 @@
   border-radius: 5%;
   width: 1500px;
 }
+
+.gridLayout {
+  display: grid;
+  grid-template-columns: 580px 580px 580px;
+  grid-template-rows: 400px 50px 400px;
+  column-gap: 70px;
+  row-gap: 72px;
+  margin-left: 25px;
+  margin-right: 25px;
+  align-items: center;
+  font-family: Poke;
+}
+
+.descriptors {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+.descriptions {
+  grid-row-start: 3;
+  grid-column-start: 1;
+}
+.buttonsDetails {
+  grid-row-start: 3;
+  grid-column-start: 3;
+}
+.stats {
+  grid-row-start: 3;
+  grid-column-start: 2;
+}
+
+.imageRay {
+  background-image: url("https://64.media.tumblr.com/6794739b290720d1b8d76d4a25fccb0f/tumblr_p7rzoloLcU1x5ra9co1_540.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
