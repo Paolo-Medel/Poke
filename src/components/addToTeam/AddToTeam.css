@@ -1,0 +1,46 @@
+.addToTeamBG {
+  background-image: url("https://i.imgur.com/7nCRR.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 1063px;
+  font-family: Poke;
+}
+
+.pokemonName {
+  text-align: center;
+  font-size: 75px;
+  font-family: Poke;
+}
+
+.imagePokemon1 {
+  width: 300px;
+  margin-left: 800px;
+}
+
+.formBox1 {
+  border: 2px solid black;
+  display: grid;
+  grid-template-columns: 950px 950px;
+  grid-template-rows: 150px 150px 75px 50px 50px;
+  background-color: azure;
+  opacity: 0.8;
+  margin-left: 25px;
+  margin-right: 25px;
+  border-radius: 5%;
+}
+
+.leftMarginForm {
+  margin-left: 25px;
+}
+
+.topMarginForm {
+  margin-top: 25px;
+}
+
+.btnForm {
+  display: flex;
+  justify-content: flex-end;
+  grid-column-start: 2;
+  margin-right: 100px;
+  margin-bottom: 10px;
+}

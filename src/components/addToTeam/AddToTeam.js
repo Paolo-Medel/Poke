@@ -4,6 +4,7 @@ import { addToTeam } from "../../services/addToTeamService";
 import { getPokemonByName } from "../../services/pokedexService";
 import { gameService } from "../../services/gameService";
 import { Button } from "react-bootstrap";
+import "./AddToTeam.css";
 
 export const AddToTeam = ({ currentUser }) => {
   const [pokemon, setPokemon] = useState([]);
@@ -62,12 +63,20 @@ export const AddToTeam = ({ currentUser }) => {
   };
 
   return (
-    <>
-      <h1>{pokemon.name}</h1>
-      <img src={pokemon.sprites?.front_default} alt="pokemon" />
+    <div className="addToTeamBG">
       <div>
-        <form>
-          <fieldset>
+        <div className="pokemonName">
+          <div>{pokemon.name}</div>
+        </div>
+        <div>
+          <img
+            className="imagePokemon1"
+            src={pokemon.sprites?.front_default}
+            alt="pokemon"
+          />
+        </div>
+        <div className="formBox1">
+          <div className="leftMarginForm topMarginForm">
             <label>Attack: </label>
             <input
               type="number"
@@ -79,10 +88,8 @@ export const AddToTeam = ({ currentUser }) => {
                 setPokemonToAdd(copy);
               }}
             ></input>
-          </fieldset>
-        </form>
-        <form>
-          <fieldset>
+          </div>
+          <div className="topMarginForm">
             <label>Defense: </label>
             <input
               type="number"
@@ -94,10 +101,8 @@ export const AddToTeam = ({ currentUser }) => {
                 setPokemonToAdd(copy);
               }}
             ></input>
-          </fieldset>
-        </form>
-        <form>
-          <fieldset>
+          </div>
+          <div className="leftMarginForm">
             <label>Special Attack: </label>
             <input
               type="number"
@@ -109,10 +114,8 @@ export const AddToTeam = ({ currentUser }) => {
                 setPokemonToAdd(copy);
               }}
             ></input>
-          </fieldset>
-        </form>
-        <form>
-          <fieldset>
+          </div>
+          <div>
             <label>Special Defense: </label>
             <input
               type="number"
@@ -124,10 +127,9 @@ export const AddToTeam = ({ currentUser }) => {
                 setPokemonToAdd(copy);
               }}
             ></input>
-          </fieldset>
-        </form>
-        <form>
-          <fieldset>
+          </div>
+
+          <div className="leftMarginForm">
             <label>Speed: </label>
             <input
               type="number"
@@ -139,10 +141,9 @@ export const AddToTeam = ({ currentUser }) => {
                 setPokemonToAdd(copy);
               }}
             ></input>
-          </fieldset>
-        </form>
-        <form>
-          <fieldset>
+          </div>
+
+          <div>
             <label>HP: </label>
             <input
               type="number"
@@ -154,56 +155,59 @@ export const AddToTeam = ({ currentUser }) => {
                 setPokemonToAdd(copy);
               }}
             ></input>
-          </fieldset>
-        </form>
-        <label>Which ability does your Pokemon have?</label>
-        <select
-          defaultValue={"Please Select an Option"}
-          onChange={(event) => {
-            const copy = { ...pokemonToAdd };
-            copy.ability = event.target.value;
-            setPokemonToAdd(copy);
-          }}
-        >
-          <option value="">Please Select an option</option>
-          {pokemon.abilities?.map((obj) => {
-            return (
-              <option key={obj.ability.name} value={obj.ability.name}>
-                {obj.ability.name}
-              </option>
-            );
-          })}
-        </select>
+          </div>
+          <div className="leftMarginForm">
+            <label>Which ability does your Pokemon have?</label>
+            <select
+              defaultValue={"Please Select an Option"}
+              onChange={(event) => {
+                const copy = { ...pokemonToAdd };
+                copy.ability = event.target.value;
+                setPokemonToAdd(copy);
+              }}
+            >
+              <option value="">Please Select an option</option>
+              {pokemon.abilities?.map((obj) => {
+                return (
+                  <option key={obj.ability.name} value={obj.ability.name}>
+                    {obj.ability.name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+
+          <div>
+            <label>Which game did you catch {pokemon.name} in?</label>
+            <select
+              onChange={(event) => {
+                const copy = { ...pokemonToAdd };
+                copy.gameId = parseInt(event.target.value);
+                setPokemonToAdd(copy);
+              }}
+              defaultValue={"Please Select an option"}
+            >
+              <option value="">Please Select an option</option>
+              {games.map((game) => {
+                return (
+                  <option value={game.id} key={game.id}>
+                    {game.name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div className="btnForm">
+            <Button
+              onClick={() => {
+                handleSave();
+              }}
+            >
+              Save this 'Mon!
+            </Button>
+          </div>
+        </div>
       </div>
-      <div>
-        <label>Which game did you catch {pokemon.name} in?</label>
-        <select
-          onChange={(event) => {
-            const copy = { ...pokemonToAdd };
-            copy.gameId = parseInt(event.target.value);
-            setPokemonToAdd(copy);
-          }}
-          defaultValue={"Please Select an option"}
-        >
-          <option value="">Please Select an option</option>
-          {games.map((game) => {
-            return (
-              <option value={game.id} key={game.id}>
-                {game.name}
-              </option>
-            );
-          })}
-        </select>
-      </div>
-      <div>
-        <Button
-          onClick={() => {
-            handleSave();
-          }}
-        >
-          Save this 'Mon!
-        </Button>
-      </div>
-    </>
+    </div>
   );
 };

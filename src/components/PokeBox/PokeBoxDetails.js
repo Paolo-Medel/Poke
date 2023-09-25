@@ -35,44 +35,59 @@ export const PokeBoxDetails = () => {
   return (
     <div className="imageRay">
       <div className="gridLayout">
-        <div>
-          <img src={pokeApiDetail.sprites?.front_default} alt="pokemon" />
-          <h1>{pokemonName}</h1>
+        <div className="yellowBG1">
+          <div className="pokemonName">{pokemonName}</div>
+          <img
+            className="imagePokemon"
+            src={pokeApiDetail.sprites?.front_default}
+            alt="pokemon"
+          />
         </div>
-        <div className="descriptors yellow">
-          <div>Height: {pokeApiDetail.height} dm</div>
+        <div className="descriptors yellowBG2">
+          <div className="marginLeft">Height: {pokeApiDetail.height} dm</div>
           <div>Weight: {pokeApiDetail.weight}lbs</div>
-          <div>Ability: {ownedPokemon?.[0]?.ability}</div>
+          <div className="marginLeft">
+            Ability: {ownedPokemon?.[0]?.ability}
+          </div>
           <div>
             {pokemonName} was caught in {game[0]?.name}
           </div>
         </div>
-        <div>
-          Type: {pokeApiDetail.types?.[0].type.name}{" "}
-          {pokeApiDetail.types?.[1]?.type.name}
+        <div className="yellowBG3 type">
+          <div className="marginLeft">
+            Type: {pokeApiDetail.types?.[0].type.name}{" "}
+            {pokeApiDetail.types?.[1]?.type.name}
+          </div>
         </div>
-        <div className="descriptions yellow">Description</div>
-        <div className="stats yellow">
-          <div>Attack: {ownedPokemon?.[0]?.attack}</div>
+        <div className="descriptions yellowBG4">
+          <div className="marginLeft">Description:</div>
+        </div>
+        <div className="stats yellowBG5">
+          <div className="marginLeft">Attack: {ownedPokemon?.[0]?.attack}</div>
           <div>Defense: {ownedPokemon?.[0]?.defense}</div>
-          <div>Sp Atk: {ownedPokemon?.[0]?.spAtk}</div>
+          <div className="marginLeft">Sp Atk: {ownedPokemon?.[0]?.spAtk}</div>
           <div>Sp Def: {ownedPokemon?.[0]?.spDef}</div>
-          <div>Speed: {ownedPokemon?.[0]?.speed}</div>
+          <div className="marginLeft">Speed: {ownedPokemon?.[0]?.speed}</div>
           <div>HP: {ownedPokemon?.[0]?.hp}</div>
         </div>
         <div className="buttonsDetails yellow">
-          <Link to={`/pokebox/${pokemonName}/edit`}>
-            <Button>Edit {pokemonName}</Button>
-          </Link>
-          <Button
-            onClick={() => {
-              deleteOwnedPokemonById(ownedPokemon[0].id).then(() => {
-                navigate(`/pokebox/`);
-              });
-            }}
-          >
-            Release to Wild
-          </Button>
+          <div>
+            <Link to={`/pokebox/${pokemonName}/edit`}>
+              <Button className="btnHeightWidth">Edit {pokemonName}</Button>
+            </Link>
+          </div>
+          <div>
+            <Button
+              className="btnHeightWidth"
+              onClick={() => {
+                deleteOwnedPokemonById(ownedPokemon[0].id).then(() => {
+                  navigate(`/pokebox/`);
+                });
+              }}
+            >
+              Release to Wild
+            </Button>
+          </div>
         </div>
       </div>
     </div>

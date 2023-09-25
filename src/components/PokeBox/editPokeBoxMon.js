@@ -46,149 +46,159 @@ export const EditPokeBoxMon = ({ currentUser }) => {
   };
 
   return (
-    <>
-      <h1>{currentPokemon[0]?.name}</h1>
-      <img src={currentPokemon[0]?.image} alt="currentPokemon" />
+    <div className="editPokeBoxBG">
       <div>
-        <form>
-          <fieldset>
-            <label>Attack: </label>
-            <input
-              type="number"
-              required
-              value={currentPokemon[0]?.attack}
-              onChange={(event) => {
-                const copy = { ...currentPokemon };
-                copy[0].attack = parseInt(event.target.value);
-                setCurrentPokemon(copy);
-              }}
-            ></input>
-          </fieldset>
-        </form>
-        <form>
-          <fieldset>
-            <label>Defense: </label>
-            <input
-              type="number"
-              required
-              value={currentPokemon[0]?.defense}
-              onChange={(event) => {
-                const copy = { ...currentPokemon };
-                copy[0].defense = parseInt(event.target.value);
-                setCurrentPokemon(copy);
-              }}
-            ></input>
-          </fieldset>
-        </form>
-        <form>
-          <fieldset>
-            <label>Special Attack: </label>
-            <input
-              type="number"
-              required
-              value={currentPokemon[0]?.spAtk}
-              onChange={(event) => {
-                const copy = { ...currentPokemon };
-                copy[0].spAtk = parseInt(event.target.value);
-                setCurrentPokemon(copy);
-              }}
-            ></input>
-          </fieldset>
-        </form>
-        <form>
-          <fieldset>
-            <label>Special Defense: </label>
-            <input
-              type="number"
-              required
-              value={currentPokemon[0]?.spDef}
-              onChange={(event) => {
-                const copy = { ...currentPokemon };
-                copy[0].spDef = parseInt(event.target.value);
-                setCurrentPokemon(copy);
-              }}
-            ></input>
-          </fieldset>
-        </form>
-        <form>
-          <fieldset>
-            <label>Speed: </label>
-            <input
-              type="number"
-              required
-              value={currentPokemon[0]?.speed}
-              onChange={(event) => {
-                const copy = { ...currentPokemon };
-                copy[0].speed = parseInt(event.target.value);
-                setCurrentPokemon(copy);
-              }}
-            ></input>
-          </fieldset>
-        </form>
-        <form>
-          <fieldset>
-            <label>HP: </label>
-            <input
-              type="number"
-              required
-              value={currentPokemon[0]?.hp}
-              onChange={(event) => {
-                const copy = { ...currentPokemon };
-                copy[0].hp = parseInt(event.target.value);
-                setCurrentPokemon(copy);
-              }}
-            ></input>
-          </fieldset>
-        </form>
-        {/* <label>Which ability does your Pokemon have?</label>
+        <div>
+          <div className="pokemonName">{currentPokemon[0]?.name}</div>
+        </div>
+        <div>
+          <img
+            className="imagePokemon1"
+            src={currentPokemon[0]?.image}
+            alt="currentPokemon"
+          />
+        </div>
+        <div className="formBox">
+          <div>
+            <div className="leftMarginForm topMarginForm">
+              <label>Attack: </label>
+              <input
+                type="number"
+                required
+                value={currentPokemon[0]?.attack}
+                onChange={(event) => {
+                  const copy = { ...currentPokemon };
+                  copy[0].attack = parseInt(event.target.value);
+                  setCurrentPokemon(copy);
+                }}
+              ></input>
+            </div>
+          </div>
+          <div>
+            <div className="topMarginForm">
+              <label>Defense: </label>
+              <input
+                type="number"
+                required
+                value={currentPokemon[0]?.defense}
+                onChange={(event) => {
+                  const copy = { ...currentPokemon };
+                  copy[0].defense = parseInt(event.target.value);
+                  setCurrentPokemon(copy);
+                }}
+              ></input>
+            </div>
+          </div>
+          <div>
+            <div className="leftMarginForm">
+              <label>Special Attack: </label>
+              <input
+                type="number"
+                required
+                value={currentPokemon[0]?.spAtk}
+                onChange={(event) => {
+                  const copy = { ...currentPokemon };
+                  copy[0].spAtk = parseInt(event.target.value);
+                  setCurrentPokemon(copy);
+                }}
+              ></input>
+            </div>
+          </div>
+          <div>
+            <div>
+              <label>Special Defense: </label>
+              <input
+                type="number"
+                required
+                value={currentPokemon[0]?.spDef}
+                onChange={(event) => {
+                  const copy = { ...currentPokemon };
+                  copy[0].spDef = parseInt(event.target.value);
+                  setCurrentPokemon(copy);
+                }}
+              ></input>
+            </div>
+          </div>
+          <div>
+            <div className="leftMarginForm">
+              <label>Speed: </label>
+              <input
+                type="number"
+                required
+                value={currentPokemon[0]?.speed}
+                onChange={(event) => {
+                  const copy = { ...currentPokemon };
+                  copy[0].speed = parseInt(event.target.value);
+                  setCurrentPokemon(copy);
+                }}
+              ></input>
+            </div>
+          </div>
+          <div>
+            <div>
+              <label>HP: </label>
+              <input
+                type="number"
+                required
+                value={currentPokemon[0]?.hp}
+                onChange={(event) => {
+                  const copy = { ...currentPokemon };
+                  copy[0].hp = parseInt(event.target.value);
+                  setCurrentPokemon(copy);
+                }}
+              ></input>
+            </div>
+          </div>
+          {/* <label>Which ability does your Pokemon have?</label>
         <select
-          defaultValue={"Please Select an Option"}
-          onChange={(event) => {
-            const copy = { ...pokemonToAdd };
-            copy.ability = event.target.value;
-            setPokemonToAdd(copy);
-          }}
+        defaultValue={"Please Select an Option"}
+        onChange={(event) => {
+          const copy = { ...pokemonToAdd };
+          copy.ability = event.target.value;
+          setPokemonToAdd(copy);
+        }}
         >
-          <option value="">Please Select an option</option>
-          {pokemon.abilities?.map((obj) => {
-            return (
-              <option key={obj.ability.name} value={obj.ability.name}>
-                {obj.ability.name}
-              </option>
+        <option value="">Please Select an option</option>
+        {pokemon.abilities?.map((obj) => {
+          return (
+            <option key={obj.ability.name} value={obj.ability.name}>
+            {obj.ability.name}
+            </option>
             );
           })}
-        </select>
-      </div> */}
-        {/* <div>
+          </select>
+        </div> */}
+          {/* <div>
           <label>Which game did you catch {pokemonName} in?</label>
           <select
-            onChange={(event) => {
-              const copy = { ...currentPokemon };
-              copy[0].gameId = parseInt(event.target.value);
-              setCurrentPokemon(copy);
-            }}
-            defaultValue={"Please Select an option"}
+          onChange={(event) => {
+            const copy = { ...currentPokemon };
+            copy[0].gameId = parseInt(event.target.value);
+            setCurrentPokemon(copy);
+          }}
+          defaultValue={"Please Select an option"}
           >
-            <option value="">Please Select an option</option>
-            {games.map((game) => {
-              return (
-                <option value={game.id} key={game.id}>
-                  {game.name}
-                </option>
+          <option value="">Please Select an option</option>
+          {games.map((game) => {
+            return (
+              <option value={game.id} key={game.id}>
+              {game.name}
+              </option>
               );
             })}
-          </select>
-        </div>*/}
-        <div>
-          <Button
-            onClick={() => {
-              handleSave();
-            }}
-          >
-            Save this 'Mon!
-          </Button>
+            </select>
+          </div>*/}
+          <div className="btnForm">
+            <Button
+              onClick={() => {
+                handleSave();
+              }}
+            >
+              Save this 'Mon!
+            </Button>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
