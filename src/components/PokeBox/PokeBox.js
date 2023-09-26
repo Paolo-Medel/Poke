@@ -23,7 +23,7 @@ export const PokeBox = ({ currentUser }) => {
           <div className="pokebox">
             {ownedPokemon.map((obj) => {
               return (
-                <Link to={`/pokebox/${obj.name}`} key={obj.id}>
+                <Link to={`/pokebox/${obj.id}`} key={obj.id}>
                   <img src={obj.image} alt={obj.name} key={obj.id} />
                 </Link>
               );

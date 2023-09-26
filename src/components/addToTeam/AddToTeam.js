@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { addToTeam } from "../../services/addToTeamService";
-import { getPokemonByName } from "../../services/pokedexService";
+import {
+  getPokemonByName,
+  getPokemonDescription,
+} from "../../services/pokedexService";
 import { gameService } from "../../services/gameService";
 import { Button } from "react-bootstrap";
 import "./AddToTeam.css";
@@ -22,6 +25,10 @@ export const AddToTeam = ({ currentUser }) => {
     speed: 0,
     image: "",
     ability: "",
+    height: 0,
+    weight: 0,
+    type1: "",
+    type2: "",
   });
   const { pokemonName } = useParams();
 
@@ -34,6 +41,10 @@ export const AddToTeam = ({ currentUser }) => {
       copy.name = obj.name;
       copy.pokeId = obj.id;
       copy.image = obj.sprites.front_default;
+      copy.height = obj.height;
+      copy.weight = obj.weight;
+      copy.type1 = obj.types[0].type.name;
+      copy.type2 = obj.types[1]?.type.name;
       setPokemonToAdd(copy);
     });
     gameService().then((obj) => {
@@ -55,6 +66,10 @@ export const AddToTeam = ({ currentUser }) => {
       speed: pokemonToAdd.speed,
       image: pokemonToAdd.image,
       ability: pokemonToAdd.ability,
+      height: pokemonToAdd.height,
+      weight: pokemonToAdd.weight,
+      type1: pokemonToAdd.type1,
+      type2: pokemonToAdd.type2,
     };
 
     addToTeam(editedPokemon).then(() => {

@@ -1,18 +1,41 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getPokemonByName } from "../../services/pokedexService";
+import {
+  getPokemonByName,
+  getPokemonDescription,
+} from "../../services/pokedexService";
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export const PokeDexDetails = () => {
   const [pokeDetail, setPokeDetails] = useState([]);
+  const [pokeDescription, setPokeDescription] = useState([]);
+  const [description, setDescription] = useState([]);
   const { pokemonName } = useParams();
 
   useEffect(() => {
     getPokemonByName(pokemonName).then((obj) => {
       setPokeDetails(obj);
     });
+    getPokemonDescription(pokemonName).then((obj) => {
+      setPokeDescription(obj);
+    });
   }, [pokemonName]);
+
+  useEffect(() => {
+    const englishDescription = (pokeObj) => {
+      const flavor_text = pokeObj?.flavor_text_entries;
+      if (flavor_text !== undefined) {
+        for (const obj of flavor_text) {
+          if (obj.language.name === "en") {
+            return obj.flavor_text;
+          }
+        }
+      }
+    };
+
+    setDescription(englishDescription(pokeDescription));
+  }, [pokeDescription]);
 
   return (
     <div className="PokeDexDetails">
@@ -40,12 +63,14 @@ export const PokeDexDetails = () => {
             </div> */}
           </div>
         </div>
-        {/* <div>
-          <p>Description</p>
-        </div> */}
+
+        <div className="descriptionz">
+          <div>Description: {description}</div>
+        </div>
+
         <div className="AddToTeamBtn">
           <Link to={`/pokedex/${pokemonName}/AddToTeam`}>
-            <button>Add to Team</button>
+            <Button>Add to Team</Button>
           </Link>
         </div>
       </div>

@@ -4,28 +4,48 @@ import { getPokemons } from "../../services/pokedexService";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { imageService } from "../../services/descriptionsService";
 
 export const PokeDex = () => {
   const [pokemons, setPokemons] = useState([]);
+  const [descriptions, setDescriptions] = useState([]);
 
   useEffect(() => {
     getPokemons().then((obj) => {
       setPokemons(obj);
     });
+    imageService().then((obj) => {
+      setDescriptions(obj);
+    });
   }, []);
 
   return (
-    <>
-      <div className="cardFlex">
-        {pokemons.results?.map((obj) => {
+    <div className="pdBG">
+      <div className="cardFlex ">
+        {descriptions.map((obj) => {
           return (
-            <Link className="linkBG" to={`/pokedex/${obj.name}`} key={obj.name}>
-              <p className="font">{obj.name}</p>
-            </Link>
+            <div className="divBG">
+              <img
+                alt="pokemon"
+                src={obj.image}
+                style={{ width: 200, marginLeft: 200 }}
+              ></img>
+              <Link
+                className="linkBG"
+                to={`/pokedex/${obj.name}`}
+                key={obj.name}
+              >
+                <div className="font">{obj.name}</div>
+              </Link>
+            </div>
           );
         })}
+        {/* {pokemons.results?.map((obj) => {
+          return (
+          );
+        })} */}
       </div>
-    </>
+    </div>
   );
 };
 

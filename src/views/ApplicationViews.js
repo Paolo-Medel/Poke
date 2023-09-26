@@ -41,9 +41,9 @@ export const ApplicationViews = () => {
         </Route>
         <Route path="pokebox">
           <Route index element={<PokeBox currentUser={currentUser} />} />
-          <Route path=":pokemonName" element={<PokeBoxDetails />} />
+          <Route path=":id" element={<PokeBoxDetails />} />
           <Route
-            path=":pokemonName/edit"
+            path=":id/edit"
             element={<EditPokeBoxMon currentUser={currentUser} />}
           />
         </Route>

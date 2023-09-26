@@ -35,8 +35,8 @@ export const editPokeBox = (pokemon) => {
   });
 };
 
-export const getOwnedPokemonById = (pokemon) => {
-  return fetch(`http://localhost:8088/ownedPokemon/${pokemon.id}`).then((res) =>
+export const getOwnedPokemonById = (id) => {
+  return fetch(`http://localhost:8088/ownedPokemon/${id}/`).then((res) =>
     res.json()
   );
 };
