@@ -9,3 +9,9 @@ export const getPokemonByName = (name) => {
     res.json()
   );
 };
+
+export const getPokemonDescription = (name) => {
+  return fetch(`https://pokeapi.co/api/v2/pokemon-species/${name}/`).then(
+    (res) => res.json()
+  );
+};

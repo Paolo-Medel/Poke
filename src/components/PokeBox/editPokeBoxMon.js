@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   editPokeBox,
-  pokeBoxServiceIdAndName,
+  getOwnedPokemonById,
 } from "../../services/pokeBoxService";
 import { gameService } from "../../services/gameService";
 import { Button } from "react-bootstrap";
@@ -10,10 +10,10 @@ import { Button } from "react-bootstrap";
 export const EditPokeBoxMon = ({ currentUser }) => {
   const [currentPokemon, setCurrentPokemon] = useState({});
   const [games, setGames] = useState([]);
-  const { pokemonName } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
-    pokeBoxServiceIdAndName(currentUser.id, pokemonName).then((obj) => {
+    getOwnedPokemonById(id).then((obj) => {
       setCurrentPokemon(obj);
     });
     gameService().then((obj) => {
@@ -25,23 +25,27 @@ export const EditPokeBoxMon = ({ currentUser }) => {
 
   const handleSave = () => {
     let editedPokemon = {
-      name: currentPokemon[0].name,
-      userId: currentPokemon[0].userId,
-      pokeId: currentPokemon[0].pokeId,
-      gameId: currentPokemon[0].gameId,
-      attack: currentPokemon[0].attack,
-      defense: currentPokemon[0].defense,
-      spAtk: currentPokemon[0].spAtk,
-      spDef: currentPokemon[0].spDef,
-      hp: currentPokemon[0].hp,
-      speed: currentPokemon[0].speed,
-      image: currentPokemon[0].image,
-      ability: currentPokemon[0].ability,
-      id: currentPokemon[0].id,
+      name: currentPokemon.name,
+      userId: currentPokemon.userId,
+      pokeId: currentPokemon.pokeId,
+      gameId: currentPokemon.gameId,
+      attack: currentPokemon.attack,
+      defense: currentPokemon.defense,
+      spAtk: currentPokemon.spAtk,
+      spDef: currentPokemon.spDef,
+      hp: currentPokemon.hp,
+      speed: currentPokemon.speed,
+      image: currentPokemon.image,
+      ability: currentPokemon.ability,
+      height: currentPokemon.height,
+      weight: currentPokemon.weight,
+      type1: currentPokemon.type1,
+      type2: currentPokemon.type2,
+      id: currentPokemon.id,
     };
 
     editPokeBox(editedPokemon).then(() => {
-      navigate(`/pokebox/${pokemonName}`);
+      navigate(`/pokebox/${id}`);
     });
   };
 
@@ -49,12 +53,12 @@ export const EditPokeBoxMon = ({ currentUser }) => {
     <div className="editPokeBoxBG">
       <div>
         <div>
-          <div className="pokemonName">{currentPokemon[0]?.name}</div>
+          <div className="pokemonName">{currentPokemon.name}</div>
         </div>
         <div>
           <img
             className="imagePokemon1"
-            src={currentPokemon[0]?.image}
+            src={currentPokemon.image}
             alt="currentPokemon"
           />
         </div>
@@ -65,10 +69,10 @@ export const EditPokeBoxMon = ({ currentUser }) => {
               <input
                 type="number"
                 required
-                value={currentPokemon[0]?.attack}
+                value={currentPokemon.attack}
                 onChange={(event) => {
                   const copy = { ...currentPokemon };
-                  copy[0].attack = parseInt(event.target.value);
+                  copy.attack = parseInt(event.target.value);
                   setCurrentPokemon(copy);
                 }}
               ></input>
@@ -80,10 +84,10 @@ export const EditPokeBoxMon = ({ currentUser }) => {
               <input
                 type="number"
                 required
-                value={currentPokemon[0]?.defense}
+                value={currentPokemon.defense}
                 onChange={(event) => {
                   const copy = { ...currentPokemon };
-                  copy[0].defense = parseInt(event.target.value);
+                  copy.defense = parseInt(event.target.value);
                   setCurrentPokemon(copy);
                 }}
               ></input>
@@ -95,10 +99,10 @@ export const EditPokeBoxMon = ({ currentUser }) => {
               <input
                 type="number"
                 required
-                value={currentPokemon[0]?.spAtk}
+                value={currentPokemon.spAtk}
                 onChange={(event) => {
                   const copy = { ...currentPokemon };
-                  copy[0].spAtk = parseInt(event.target.value);
+                  copy.spAtk = parseInt(event.target.value);
                   setCurrentPokemon(copy);
                 }}
               ></input>
@@ -110,10 +114,10 @@ export const EditPokeBoxMon = ({ currentUser }) => {
               <input
                 type="number"
                 required
-                value={currentPokemon[0]?.spDef}
+                value={currentPokemon.spDef}
                 onChange={(event) => {
                   const copy = { ...currentPokemon };
-                  copy[0].spDef = parseInt(event.target.value);
+                  copy.spDef = parseInt(event.target.value);
                   setCurrentPokemon(copy);
                 }}
               ></input>
@@ -125,10 +129,10 @@ export const EditPokeBoxMon = ({ currentUser }) => {
               <input
                 type="number"
                 required
-                value={currentPokemon[0]?.speed}
+                value={currentPokemon.speed}
                 onChange={(event) => {
                   const copy = { ...currentPokemon };
-                  copy[0].speed = parseInt(event.target.value);
+                  copy.speed = parseInt(event.target.value);
                   setCurrentPokemon(copy);
                 }}
               ></input>
@@ -140,10 +144,10 @@ export const EditPokeBoxMon = ({ currentUser }) => {
               <input
                 type="number"
                 required
-                value={currentPokemon[0]?.hp}
+                value={currentPokemon.hp}
                 onChange={(event) => {
                   const copy = { ...currentPokemon };
-                  copy[0].hp = parseInt(event.target.value);
+                  copy.hp = parseInt(event.target.value);
                   setCurrentPokemon(copy);
                 }}
               ></input>
