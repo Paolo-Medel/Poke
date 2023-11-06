@@ -1,8 +1,11 @@
 # Welcome to PokeStop!
 
 This project was created with the intention of giving trainers the ability to keep track of all the Pokemon they have caught across the first 7 generations of Pokemon.
-
 ## Instructions:
+
+
+  
+## Views:
 
 ### `Register`
 
