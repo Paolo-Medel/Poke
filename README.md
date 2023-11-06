@@ -1,6 +1,9 @@
 # Welcome to PokeStop!
 
 This project was created with the intention of giving trainers the ability to keep track of all the Pokemon they have caught across the first 7 generations of Pokemon.
+### `Languages Used`
+
+This project makes use of React, HTML and CSS.
 ## Instructions:
 
 
@@ -31,8 +34,3 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ### `How to edit your Pokemon`
-
-### `Languages Used`
-
-This project makes use of React, HTML and CSS.
-
