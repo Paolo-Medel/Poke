@@ -11,11 +11,11 @@ WireFrame: https://miro.com/app/board/uXjVMnPH9g4=/
 
 ERD: https://dbdiagram.io/d/Front-end-Capstone-64f9fc9f02bd1c4a5e29a7fa
 ## Instructions:
-
-1. Clone the Repo
-2. CD into the Repo
-3. npm install
-4. npm start
+ In your Terminal
+  1. Clone the Repo
+  2. CD into the Repo
+  3. npm install
+  4. npm start
 
   
 ## Views:
